@@ -19,7 +19,12 @@ public class Player : MonoBehaviour
 
     private void HandleInput() {
         if (Input.GetButtonDown("Jump")) {
-            rigidBody2D.AddForce(Vector2.up * 8, ForceMode2D.Impulse);
+            rigidBody2D.AddForce(Vector2.up * 16, ForceMode2D.Impulse);
+        }
+        if (Input.GetButton("Glide")) {
+            rigidBody2D.drag = 10;
+        } else {
+            rigidBody2D.drag = 0;
         }
     }
 }
