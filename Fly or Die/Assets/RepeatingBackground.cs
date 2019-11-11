@@ -11,8 +11,7 @@ public class RepeatingBackground : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Coords");
-        Debug.Log(gameObject.GetComponent<SpriteRenderer>().bounds.size.x);
+
     }
 
     // Update is called once per frame
