@@ -6,11 +6,14 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rigidBody2D;
     private SpriteRenderer spriteRenderer;
+
+    private bool isOnGround;
     // Start is called before the first frame update
     void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        isOnGround = false;
     }
 
     // Update is called once per frame
@@ -20,8 +23,9 @@ public class Player : MonoBehaviour
     }
 
     private void HandleInput() {
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Jump") && isOnGround) {
             rigidBody2D.AddForce(Vector2.up * 24, ForceMode2D.Impulse);
+            isOnGround = false;
         }
         if (Input.GetButton("Glide")) {
             rigidBody2D.drag = 10;
@@ -30,6 +34,14 @@ public class Player : MonoBehaviour
         } else {
             rigidBody2D.drag = 0;
             spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/run");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Ground"))
+        {
+            isOnGround = true;
         }
     }
 }
