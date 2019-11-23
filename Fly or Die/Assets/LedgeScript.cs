@@ -24,7 +24,8 @@ public class LedgeScript : MonoBehaviour
 
         // Collision ignored when ledge is above player
         float bottomOfPlayer = playerColliders[0].bounds.min.y;
-        bool ignoreCollisionWithPlayer = transform.position.y >= bottomOfPlayer ? true : false;
+        float offset = 0.05f; // small offset makes landing on the ledges more reliable
+        bool ignoreCollisionWithPlayer = transform.position.y >= bottomOfPlayer + offset ? true : false;
 
         foreach(Collider2D collider in playerColliders)
             Physics2D.IgnoreCollision(ledgeCollider, collider, ignoreCollisionWithPlayer);

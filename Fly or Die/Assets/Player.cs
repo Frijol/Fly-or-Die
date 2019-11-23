@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private bool isOnGround;
+    private bool isGliding;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         isOnGround = false;
+        isGliding = false;
     }
 
     // Update is called once per frame
@@ -24,16 +27,23 @@ public class Player : MonoBehaviour
         HandleInput();
     }
 
-    private void HandleInput() {
-        if (Input.GetButtonDown("Jump") && isOnGround) {
+    private void HandleInput()
+    {
+        if (Input.GetButtonDown("Jump") && isOnGround)
+        {
             rigidBody2D.AddForce(Vector2.up * 24, ForceMode2D.Impulse);
             isOnGround = false;
         }
-        if (Input.GetButton("Glide")) {
+
+        if (Input.GetButton("Glide"))
+        {
+            isGliding = true;
             rigidBody2D.drag = 10;
             spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/glide");
-
-        } else {
+        }
+        else
+        {
+            isGliding = false;
             rigidBody2D.drag = 0;
             spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/run");
         }
@@ -52,6 +62,15 @@ public class Player : MonoBehaviour
         if (collision.tag.Equals("Ground"))
         {
             isOnGround = false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // Add a small continuous upwards force if the player is gliding through an updraft
+        if(isGliding && collision.GetComponent<UpdraftScript>())
+        {
+            rigidBody2D.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
         }
     }
 }
