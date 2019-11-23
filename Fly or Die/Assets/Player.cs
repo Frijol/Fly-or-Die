@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         // Add a small continuous upwards force if the player is gliding through an updraft
         if(isGliding && collision.GetComponent<UpdraftScript>())
         {
-            rigidBody2D.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
+            rigidBody2D.AddForce(Vector2.up * 1.25f, ForceMode2D.Impulse);
         }
     }
 }
