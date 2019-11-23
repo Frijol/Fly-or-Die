@@ -5,12 +5,17 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     public float respawnFrequency;
-    private float timeUntilNextSpawn;
+    public float verticalVariance;
     public GameObject obstaclePrefab;
+
+    private float timeUntilNextSpawn;
     // Start is called before the first frame update
     void Start()
     {
         timeUntilNextSpawn = respawnFrequency;
+
+        // Add in a small random initial spawn variance
+        timeUntilNextSpawn += Random.Range(0.1f, 4.8f);
     }
 
     // Update is called once per frame
@@ -20,7 +25,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (timeUntilNextSpawn <= 0f) {
             Vector3 spawnPosition = this.transform.position;
-            spawnPosition.y += Random.Range(0.1f, 2.5f);
+            spawnPosition.y += Random.Range(0.1f, verticalVariance);
 
             timeUntilNextSpawn = respawnFrequency * Random.Range(0.1f, 4.8f);
             Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);

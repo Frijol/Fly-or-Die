@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
+        rigidBody2D.freezeRotation = true;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         isOnGround = false;
     }
@@ -42,6 +44,14 @@ public class Player : MonoBehaviour
         if (collision.tag.Equals("Ground"))
         {
             isOnGround = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Ground"))
+        {
+            isOnGround = false;
         }
     }
 }
