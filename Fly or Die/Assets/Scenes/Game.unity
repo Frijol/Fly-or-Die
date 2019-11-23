@@ -263,6 +263,53 @@ MonoBehaviour:
   speed: 5
   endX: -11.65568
   startX: 0
+--- !u!1 &245192408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 245192410}
+  - component: {fileID: 245192409}
+  m_Layer: 0
+  m_Name: CloudSpawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &245192409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245192408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747757cea3e3086479f41882f3a5b8e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnFrequency: 1
+  verticalVariance: 0.5
+  obstaclePrefab: {fileID: 2925098008358154356, guid: eff5100397881084faf09106c16a9da1,
+    type: 3}
+--- !u!4 &245192410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245192408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.58, y: 3.39, z: -2.5887156}
+  m_LocalScale: {x: 0.11219796, y: 0.1869966, z: 0.1869966}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &473921631
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +902,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2068828159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2068828161}
+  - component: {fileID: 2068828160}
+  m_Layer: 0
+  m_Name: CloudSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2068828160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068828159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747757cea3e3086479f41882f3a5b8e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnFrequency: 5
+  verticalVariance: 0.5
+  obstaclePrefab: {fileID: 2925098008358154356, guid: eff5100397881084faf09106c16a9da1,
+    type: 3}
+--- !u!4 &2068828161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068828159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.58, y: 0.91, z: -2.5887156}
+  m_LocalScale: {x: 0.11219796, y: 0.1869966, z: 0.1869966}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3911820611339362684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -866,6 +960,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LedgeSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942179452027363747, guid: 8d3b13d1642a5f64797e04cef0d1887a,
+        type: 3}
+      propertyPath: verticalVariance
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7172465096138476385, guid: 8d3b13d1642a5f64797e04cef0d1887a,
         type: 3}
@@ -921,11 +1020,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942179452027363747, guid: 8d3b13d1642a5f64797e04cef0d1887a,
-        type: 3}
-      propertyPath: verticalVariance
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d3b13d1642a5f64797e04cef0d1887a, type: 3}
