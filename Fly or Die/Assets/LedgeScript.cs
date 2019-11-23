@@ -5,13 +5,16 @@ using UnityEngine;
 public class LedgeScript : MonoBehaviour
 {
     public float speed;
-    private GameObject player;
+    private Collider2D[] playerColliders;
+    private Collider2D ledgeCollider;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Fetch player reference
-        player = GameObject.FindWithTag("Player");
+        // Fetch player and ledge colliders
+        playerColliders = GameObject.FindWithTag("Player").GetComponents<Collider2D>();
+        ledgeCollider = GetComponent<Collider2D>();
+
     }
 
     // Update is called once per frame
@@ -20,8 +23,11 @@ public class LedgeScript : MonoBehaviour
         // Move left
         transform.Translate(Vector2.left * speed * Time.deltaTime);
 
-        // Collider only enabled when below player
-        float bottomOfPlayer = player.GetComponent<Collider2D>().bounds.min.y;
-        GetComponent<Collider2D>().enabled = transform.position.y <= bottomOfPlayer ? true : false;
+        // Collision ignored when ledge is above player
+        float bottomOfPlayer = playerColliders[0].bounds.min.y;
+        bool ignoreCollisionWithPlayer = transform.position.y >= bottomOfPlayer ? true : false;
+
+        foreach(Collider2D collider in playerColliders)
+            Physics2D.IgnoreCollision(ledgeCollider, collider, ignoreCollisionWithPlayer);
     }
 }
