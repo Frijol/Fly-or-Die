@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747757cea3e3086479f41882f3a5b8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnFrequency: 2
+  respawnFrequency: 1
   obstaclePrefab: {fileID: 3523458322283783415, guid: 470acf81365f550418b6b46e1fb36b1b,
     type: 3}
 --- !u!4 &1201440736
