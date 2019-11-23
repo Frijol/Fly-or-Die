@@ -19,8 +19,11 @@ public class ObstacleSpawner : MonoBehaviour
         timeUntilNextSpawn -= Time.deltaTime;
 
         if (timeUntilNextSpawn <= 0f) {
-            timeUntilNextSpawn = respawnFrequency;
-            Instantiate(obstaclePrefab, this.transform.position, Quaternion.identity);
+            Vector3 spawnPosition = this.transform.position;
+            spawnPosition.y += Random.Range(0.1f, 2.5f);
+
+            timeUntilNextSpawn = respawnFrequency * Random.Range(0.1f, 4.8f);
+            Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
         }
     }
 }
