@@ -14,7 +14,6 @@ public class LedgeScript : MonoBehaviour
         // Fetch player and ledge colliders
         playerColliders = GameObject.FindWithTag("Player").GetComponents<Collider2D>();
         ledgeCollider = GetComponent<Collider2D>();
-
     }
 
     // Update is called once per frame
