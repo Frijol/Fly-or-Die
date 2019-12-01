@@ -8,6 +8,7 @@ public class RepeatingBackground : MonoBehaviour
 
     public float endX;
     public float startX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class RepeatingBackground : MonoBehaviour
         transform.Translate(Vector2.left * speed * Time.deltaTime);
 
         if (transform.position.x <= endX) {
-            Vector2 pos = new Vector2(startX, transform.position.y);
+            Vector3 pos = new Vector3(startX, transform.position.y, transform.position.z);
             transform.position = pos;
         }
     }
