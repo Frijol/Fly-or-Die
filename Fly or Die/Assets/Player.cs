@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         HandleInput();
         rigidBody2D.velocity = new Vector2(0f, rigidBody2D.velocity.y);
         
-        if(rigidBody2D.velocity.y < 0.5) {
+        if(rigidBody2D.velocity.y < 0.2) {
             animator.SetBool("isFalling", true);
             animator.SetBool("isAscending", false);
         } else {
