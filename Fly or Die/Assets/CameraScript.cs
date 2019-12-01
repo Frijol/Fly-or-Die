@@ -52,7 +52,7 @@ public class CameraScript : MonoBehaviour
             else if (player.transform.position.y >= firstLayerBoundary)
             {
                 layer = 2;
-                scoreScript.multiplier = 2f;
+                scoreScript.scoreMultiplier = 2f;
             }
         }
         else if (layer == 2)
@@ -61,13 +61,13 @@ public class CameraScript : MonoBehaviour
             if (player.transform.position.y < firstLayerBoundary)
             {
                 layer = 1;
-                scoreScript.multiplier = 1f;
+                scoreScript.scoreMultiplier = 1f;
             }
             // If player moves above top of screen, move camera up
             else if (player.transform.position.y >= secondLayerBoundary)
             {
                 layer = 3;
-                scoreScript.multiplier = 3f;
+                scoreScript.scoreMultiplier = 3f;
             }
         }
         else if (layer == 3)
@@ -76,7 +76,7 @@ public class CameraScript : MonoBehaviour
             if (player.transform.position.y < secondLayerBoundary)
             {
                 layer = 2;
-                scoreScript.multiplier = 2f;
+                scoreScript.scoreMultiplier = 2f;
             }
         }
 
