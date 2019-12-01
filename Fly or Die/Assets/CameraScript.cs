@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     private GameObject player;
+    private ScoreScript scoreScript;
     private Vector3 cameraStartPosition;
 
     // Y-values of the ground and the boundaries between layers.
@@ -22,6 +23,7 @@ public class CameraScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        scoreScript = GameObject.Find("Score").GetComponent<ScoreScript>();
         cameraStartPosition = transform.position;
 
         layer = 1;
@@ -50,6 +52,7 @@ public class CameraScript : MonoBehaviour
             else if (player.transform.position.y >= firstLayerBoundary)
             {
                 layer = 2;
+                scoreScript.multiplier = 2f;
             }
         }
         else if (layer == 2)
@@ -58,11 +61,13 @@ public class CameraScript : MonoBehaviour
             if (player.transform.position.y < firstLayerBoundary)
             {
                 layer = 1;
+                scoreScript.multiplier = 1f;
             }
             // If player moves above top of screen, move camera up
             else if (player.transform.position.y >= secondLayerBoundary)
             {
                 layer = 3;
+                scoreScript.multiplier = 3f;
             }
         }
         else if (layer == 3)
@@ -71,6 +76,7 @@ public class CameraScript : MonoBehaviour
             if (player.transform.position.y < secondLayerBoundary)
             {
                 layer = 2;
+                scoreScript.multiplier = 2f;
             }
         }
 
