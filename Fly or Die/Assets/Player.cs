@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleInput();
+        rigidBody2D.velocity = new Vector2(0f, rigidBody2D.velocity.y);
     }
 
     private void HandleInput()
