@@ -5,17 +5,17 @@ using UnityEngine;
 public class ScoreScript : MonoBehaviour
 {
     public float score;
-    public float multiplier;
+    public float scoreMultiplier;
 
     void Start()
     {
-        multiplier = 1f;
+        scoreMultiplier = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        score += Time.deltaTime * multiplier;
-        GetComponent<UnityEngine.UI.Text>().text = Mathf.Floor(score).ToString();
+        score += Time.deltaTime * scoreMultiplier;
+        GetComponent<UnityEngine.UI.Text>().text = $"Score: {Mathf.Floor(score).ToString()} \n Multiplier: {scoreMultiplier}x";
     }
 }

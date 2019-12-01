@@ -21,6 +21,13 @@ public class Obstacle : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Arnett") {
+            float highScore = GameObject.Find("HighScore").GetComponent<HighScoreScript>().highScore;
+            float currentScore = GameObject.Find("Score").GetComponent<ScoreScript>().score;
+
+            if (currentScore > highScore) {
+                GameObject.Find("HighScore").GetComponent<HighScoreScript>().highScore = Mathf.Floor(currentScore);
+            }
+
             SceneManager.LoadScene("MainMenu");
         }
     }

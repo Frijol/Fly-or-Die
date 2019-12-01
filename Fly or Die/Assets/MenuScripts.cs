@@ -9,7 +9,7 @@ public class MenuScripts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject.Find("HighScoreLabel").GetComponent<Text>().text = $"High Score: {GameObject.Find("HighScore").GetComponent<HighScoreScript>().highScore.ToString()}";
     }
 
     // Update is called once per frame
