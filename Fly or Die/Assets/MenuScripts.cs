@@ -22,7 +22,7 @@ public class MenuScripts : MonoBehaviour
     {
         if (newScene != null)
         {
-            SceneManager.LoadScene (newScene);
+            SceneManager.LoadScene(newScene);
         }
     }
 
