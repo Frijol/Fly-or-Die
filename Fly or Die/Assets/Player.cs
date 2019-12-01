@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
     private Rigidbody2D rigidBody2D;
     private SpriteRenderer spriteRenderer;
 
@@ -26,6 +27,14 @@ public class Player : MonoBehaviour
     {
         HandleInput();
         rigidBody2D.velocity = new Vector2(0f, rigidBody2D.velocity.y);
+        
+        if(rigidBody2D.velocity.y < 0.5) {
+            animator.SetBool("isFalling", true);
+            animator.SetBool("isAscending", false);
+        } else {
+            animator.SetBool("isAscending", true);
+            animator.SetBool("isFalling", false);
+        }
     }
 
     private void HandleInput()
@@ -39,14 +48,14 @@ public class Player : MonoBehaviour
         if (Input.GetButton("Glide") && !isOnGround)
         {
             isGliding = true;
+            animator.SetBool("isGliding", true);
             rigidBody2D.drag = 10;
-            spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/glide");
         }
         else
         {
             isGliding = false;
+            animator.SetBool("isGliding", false);
             rigidBody2D.drag = 0;
-            spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/run");
         }
     }
 
@@ -55,6 +64,7 @@ public class Player : MonoBehaviour
         if (collision.tag.Equals("Ground"))
         {
             isOnGround = true;
+            animator.SetBool("isOnGround", true);
         }
     }
 
@@ -63,6 +73,7 @@ public class Player : MonoBehaviour
         if (collision.tag.Equals("Ground"))
         {
             isOnGround = false;
+            animator.SetBool("isOnGround", false);
         }
     }
 
