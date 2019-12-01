@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
             isOnGround = false;
         }
 
-        if (Input.GetButton("Glide"))
+        if (Input.GetButton("Glide") && !isOnGround)
         {
             isGliding = true;
             rigidBody2D.drag = 10;
